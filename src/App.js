@@ -1,7 +1,10 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 import {setCurrentUser} from './redux/user/user.actions';
+
+import {selectCurrentUser} from './redux/user/user.selector';
 
 import './App.css';
 import Header from './components/header/header.component';
@@ -75,9 +78,6 @@ const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
-const mapStateToProps = ({user}) => ({
-  currentUser: user.currentUser
-
-})
+const mapStateToProps = (createStructuredSelector({currentUser: selectCurrentUser})) 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

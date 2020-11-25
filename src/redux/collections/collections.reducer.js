@@ -12,4 +12,6 @@ const collectionsReducer = (state= INITIAL_STATE_COLLECTION, action) => {
     }
 }
 
+
+
 export default collectionsReducer;

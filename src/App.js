@@ -14,7 +14,7 @@ import Contact from './pages/contactpage/contactpage';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 
-import { auth, createUserProfileDocument} from './firebase/firebase.utils';
+
 
 
 class App extends React.Component {
@@ -22,8 +22,8 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const {setCurrentUser} = this.props;
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    //const {setCurrentUser} = this.props;
+/*     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -40,7 +40,7 @@ class App extends React.Component {
         setCurrentUser(userAuth);
       
       
-    });
+    }); */
   }
 
   componentWillUnmount() {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
@@ -16,22 +16,12 @@ import CheckoutPage from './pages/checkout/checkout.component';
 
 
 
+const App = ({checkUserSession})=> {
 
-class App extends React.Component {
- 
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
- 
-    const {checkUserSession} = this.props;
+  useEffect(() => {
     checkUserSession();
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-
-  render() {
+  }, [checkUserSession])
+  
     return (
       <div>
       <Header/>
@@ -58,7 +48,7 @@ class App extends React.Component {
       )
   }
  
-}
+
 
 
 const mapDispatchToProps = dispatch => ({

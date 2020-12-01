@@ -11,7 +11,10 @@ const StripeCheckoutButton = ({ price, clearCart }) => {
 		'pk_test_51HrQNqBy92TjUARYW5up16oDIcYTrOtOFheX9BkZXgS3maOTcrxOJxYFzQGxOBXWpeWliYEFMf0eeoPUwMBylZR100KCSyC4RS';
 	const onToken = (token) => {
 		axios({
-			url: 'http://localhost:5000/payment',
+			url:
+				process.env.NODE_ENV === 'production'
+					? 'payment'
+					: 'http://localhost:5000/payment',
 			method: 'post',
 			data: {
 				amount: priceForStripe,
